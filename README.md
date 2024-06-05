@@ -62,3 +62,5 @@ curl -i http://localhost:8081 -H "Authorization: Bearer correct_api_key"
 ```
 
 Replace `correct_api_key` with the actual API key you generated.
+
+Note: This project is a modified and improved clone of [ollama-auth](https://github.com/g1ibby/ollama-auth), which originally used a basic auth configuration and a fixed version of Caddy. This enhanced version leverages environment-based API key validation for enhanced security and automatically pulls the latest versions of both Ollama and Caddy.
