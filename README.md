@@ -29,7 +29,7 @@ docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bea
 - **`-e OLLAMA_API_KEY=your_ollama_key`**: Sets the `OLLAMA_API_KEY` environment variable in the container to your specific API key.
 - **`bartolli497/ollama-bearer-auth:latest`**: Specifies the Docker image to use, pulling it from Docker Hub.
 
-Run existing Ollama models from your host machine (optional)
+Mount existing Ollama models from your host machine (optional)
 
 ```bash
 docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ~/.ollama:/root/.ollama bartolli497/ollama-bearer-auth:latest
