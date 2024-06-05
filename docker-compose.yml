@@ -1,7 +1,7 @@
-version: '3.8'
+name: ollama_proxy
 
 services:
-  myapp:
+  server:
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +13,5 @@ services:
     environment:
       - OLLAMA_HOST=0.0.0.0
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./.env.local:/etc/caddy/.env.local
+      - ~/.ollama:/root/.ollama
     restart: unless-stopped
