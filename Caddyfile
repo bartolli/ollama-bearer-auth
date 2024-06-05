@@ -1,0 +1,23 @@
+http://localhost:8081 {
+	# Define a matcher for authorized API access
+	@apiAuth {
+		header Authorization "Bearer {env.OLLAMA_API_KEY}"
+	}
+
+	# Proxy authorized requests
+	reverse_proxy @apiAuth http://localhost:11434 {
+		header_up Host {http.reverse_proxy.upstream.hostport}
+	}
+
+	# Define a matcher for unauthorized access
+	@unauthorized {
+		not {
+			header Authorization "Bearer {env.OLLAMA_API_KEY}"
+		}
+	}
+
+	# Respond to unauthorized access
+	respond @unauthorized "Unauthorized" 401 {
+		close
+	}
+}

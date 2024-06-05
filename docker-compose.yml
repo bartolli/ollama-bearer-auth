@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ollama-bearer-auth:latest
+    ports:
+      - "8081:8081"
+    env_file:  # This directive is used to specify a file to import environment variables from
+      - .env.local
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./.env.local:/etc/caddy/.env.local
+    restart: unless-stopped
