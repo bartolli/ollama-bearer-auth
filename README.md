@@ -8,7 +8,7 @@ Caddy server to securely authenticate and proxy requests to a local Ollama insta
 - **Flexible Interaction**: Supports all endpoints to interact with the Ollama API.
 - **Dockerized Setup**: Both Ollama and Caddy are containerized.
 - **Latest Versions**: Utilizes the latest versions of Ollama and Caddy, ensuring the setup benefits from the most recent updates, security patches, and features. Docker image is configured to pull the latest versions automatically.
-- **GPU Support**: Based on NVIDIA CUDA 12.5.0-runtime-ubuntu22.04, optimized for GPU-accelerated host machines to enhance large language model performance.
+- **GPU Support**: Based on NVIDIA CUDA 12.5.0-runtime-ubuntu22.04, optimized for GPU-accelerated host machines.
 - **Multi-Platform Architecture**: Supports building for both linux/amd64 and linux/arm64.
 
 ## Requirements
