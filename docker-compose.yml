@@ -1,4 +1,4 @@
-name: ollama_proxy
+name: ollama-bearer-auth
 
 services:
   server:

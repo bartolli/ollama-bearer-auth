@@ -1,4 +1,4 @@
-http://localhost:8081 {
+:8081 {
 	# Define a matcher for authorized API access
 	@apiAuth {
 		header Authorization "Bearer {env.OLLAMA_API_KEY}"
