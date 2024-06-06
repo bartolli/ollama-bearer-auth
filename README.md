@@ -8,11 +8,13 @@ Caddy server to securely authenticate and proxy requests to a local Ollama insta
 - **Flexible Interaction**: Supports all endpoints to interact with the Ollama API.
 - **Dockerized Setup**: Both Ollama and Caddy are containerized.
 - **Latest Versions**: Utilizes the latest versions of Ollama and Caddy, ensuring the setup benefits from the most recent updates, security patches, and features. Docker image is configured to pull the latest versions automatically.
+- **GPU Support**: Based on NVIDIA CUDA 12.5.0-runtime-ubuntu22.04, optimized for GPU-accelerated host machines to enhance large language model performance.
+- **Multi-Platform Architecture**: Supports building for both linux/amd64 and linux/arm64.
 
 ## Requirements
 
 - Docker
-- Docker Compose
+- Docker Compose or Docker Buildx tool (optional)
 - openssl (optional)
 
 ## Run the container directly with Docker
@@ -20,7 +22,7 @@ Caddy server to securely authenticate and proxy requests to a local Ollama insta
 To run the container directly using the pre-built image from Docker Hub without Docker Compose, use the following command:
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bearer-auth:latest
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bearer-auth:cuda
 ```
 
 **Replace `your_ollama_key` with the actual API key you generated.**
@@ -32,7 +34,7 @@ docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bea
 Mount existing Ollama models from your host machine (optional)
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ~/.ollama:/root/.ollama bartolli497/ollama-bearer-auth:latest
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ~/.ollama:/root/.ollama bartolli497/ollama-bearer-auth:cuda
 ```
 
 - **`-v ~/.ollama:/root/.ollama`**: Maps the `~/.ollama` directory on your host to the `/root/.ollama` directory in the container, ensuring necessary files are available.
@@ -47,7 +49,7 @@ and here: [Issue 2832 Comment](https://github.com/ollama/ollama/issues/2832#issu
 Mount a volume to store and keep all Ollama models outside the container
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ollama_docker_volume:/root/.ollama bartolli497/ollama-bearer-auth:latest
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ollama_docker_volume:/root/.ollama bartolli497/ollama-bearer-auth:cuda
 ```
 
 ## Build your own
@@ -81,10 +83,10 @@ Copy the generated key and update your `.env.local` file with the new API key.
 
 ## Build and run the services using Docker Compose
 
-This command will build the image for both linux/amd64 and linux/arm64 architectures
+This command will build multi-architecture image for both linux/amd64 and linux/arm64 architectures
 
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t bartolli497/ollama-bearer-auth:latest
+docker buildx build --platform linux/amd64,linux/arm64 -t <your_username>/<image_name>:<tag> .
 ```
 
 ## Testing API Key Authentication
