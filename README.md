@@ -65,6 +65,12 @@ To generate a secure API key, you can use a cryptographic random method. This en
 echo "sk-ollama-$(openssl rand -hex 16)"
 ```
 
+This should generate something like this:
+
+```bash
+sk-ollama-78834bcb4c76d97d35a0c1acd0d938c6
+```
+
 Copy the generated key and update your `.env.local` file with the new API key.
 
 ## Build and run the services using Docker Compose
