@@ -1,7 +1,6 @@
 # Ollama Behind Caddy Proxy
 
 Caddy server to securely authenticate and proxy requests to a local Ollama instance, utilizing environment-based API key validation for enhanced security.
-Here's an improved version of the description for the other repo:
 
 If you want to support multiple API keys stored in a config file, check out this repo: [ollama-bearer-auth-caddy](https://github.com/bartolli/ollama-bearer-auth-caddy).
 
