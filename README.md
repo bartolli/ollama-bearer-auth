@@ -24,19 +24,19 @@ If you want to support multiple API keys stored in a config file, check out this
 To run the container directly using the pre-built image from Docker Hub without Docker Compose, use the following command:
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bearer-auth:cuda
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key bartolli497/ollama-bearer-auth:cuda-env
 ```
 
 **Replace `your_ollama_key` with the actual API key you generated.**
 
 - **`-p 8081:8081`**: Maps port 8081 on your local machine to port 8081 in the container. Change to your preferences.
 - **`-e OLLAMA_API_KEY=your_ollama_key`**: Sets the `OLLAMA_API_KEY` environment variable in the container to your specific API key.
-- **`bartolli497/ollama-bearer-auth:latest`**: Specifies the Docker image to use, pulling it from Docker Hub.
+- **`bartolli497/ollama-bearer-auth:cuda-env`**: Specifies the Docker image to use, pulling it from Docker Hub.
 
 Mount existing Ollama models from your host machine (optional)
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ~/.ollama:/root/.ollama bartolli497/ollama-bearer-auth:cuda
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ~/.ollama:/root/.ollama bartolli497/ollama-bearer-auth:cuda-env
 ```
 
 - **`-v ~/.ollama:/root/.ollama`**: Maps the `~/.ollama` directory on your host to the `/root/.ollama` directory in the container, ensuring necessary files are available.
@@ -51,7 +51,7 @@ and here: [Issue 2832 Comment](https://github.com/ollama/ollama/issues/2832#issu
 Mount a volume to store and keep all Ollama models outside the container
 
 ```bash
-docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ollama_docker_volume:/root/.ollama bartolli497/ollama-bearer-auth:cuda
+docker run -p 8081:8081 -e OLLAMA_API_KEY=your_ollama_key -v ollama_docker_volume:/root/.ollama bartolli497/ollama-bearer-auth:cuda-env
 ```
 
 ## Build your own
