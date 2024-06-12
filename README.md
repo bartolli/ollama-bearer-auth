@@ -83,7 +83,7 @@ sk-ollama-78834bcb4c76d97d35a0c1acd0d938c6
 
 Copy the generated key and update your `.env.local` file with the new API key.
 
-## Build and run the services using Docker Compose
+## Build and run the services
 
 This command will build multi-architecture image for both linux/amd64 and linux/arm64 architectures
 
